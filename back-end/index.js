@@ -39,8 +39,12 @@ const wsServer = initWSServer()
 // WebSocket Server events binding
 
 let clients = []
+var memoir = ""
 
 wsServer.on('connection', (webSocket) => {
+
+
+
 
     webSocket.send('message du serveur' )
     console.log('WebSocket Server :: a new client has connected')
@@ -50,7 +54,21 @@ wsServer.on('connection', (webSocket) => {
         clients = clients.filter((client) => client !== webSocket)
     }
     webSocket.onmessage = (message) => {
-        console.log('WebSocket :: got a new message', message.data)
+        //console.log('WebSocket :: got a new message', message.data)
+
+        memoir =  message.data
+
+
+        var global = axios
+            .get('https://newsapi.org/v2/top-headlines?country=fr&apiKey=5e5985b128cb4b1ea61193be15a2a48d')
+            .then((httpResponse) => {
+
+                if (httpResponse.data.articles != memoir) {
+
+                    ws.send('actualise')
+
+                }
+            })
     }
     clients.push(webSocket)
 }
@@ -64,4 +82,3 @@ console.log(`WebSocket server listening on ${config.ws.host}:${config.ws.port}`)
 
 httpServer.listen(config.http.port, config.http.host)
 
-var memoir =  WebSocket.send(response.data.articles)

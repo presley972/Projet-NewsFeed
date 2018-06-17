@@ -1,11 +1,33 @@
 import axios from 'axios'
+// connection websocket + event etc
+const ws = new WebSocket('ws://localhost:8880/')
+
+
+
+ws.onopen = (event) => {
+
+    //ws.send('helloz')
+    var news = axios
+        .get('http://localhost:8080/news')
+        .then((response) => {
+            var interval = setInterval(function() {
+                ws.send(JSON.stringify(response.data.articles));
+            },50000);
+
+        })
+
+}
+
+ws.onmessage = (message) => {
+
+    console.log('message du serveur ' + message.data)
+
+}
 
 var news = axios
     .get('http://localhost:8080/news')
     .then((response) => {
-        return (response.data.articles)
-
-        WebSocket.send(response.data.articles)
+            return response.data.articles
     })
 
 console.log(news)
@@ -34,7 +56,7 @@ news.then(function (requetes) {
 
 
 // connection websocket + event etc
-const ws = new WebSocket('ws://localhost:8880/')
+const wsClient = new WebSocket('ws://localhost:8880/')
 
 
 
@@ -47,6 +69,11 @@ ws.onopen = (event) => {
 ws.onmessage = (message) => {
 
     console.log('message du serveur ' + message.data)
+
+    if(message.data == 'actualise'){
+
+        alert(message.data)
+    }
 
 }
 
