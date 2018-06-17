@@ -1,0 +1,81 @@
+html, body, p{
+    margin:0;
+    padding:0;
+}
+header{
+    padding:25px 0px;/*Marge verticale*/
+    background-color:#007bff; /*Couleur de fond*/
+    text-align:center;/*texte centré*/
+}
+
+.centercolumn{
+    width:930px;/*Taille de la colonne centrée moins le padding*/
+    margin: auto; /*centrer la colonne*/
+    padding:25px;/*margin interne*/
+    color: #fff;
+    font-size: xx-large;
+}
+
+#espace{
+
+    margin-top: 100px;
+}
+
+
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+    background-color: #FFF;
+    box-shadow: 5px 5px 10px #000;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}

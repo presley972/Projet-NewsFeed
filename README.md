@@ -35,5 +35,5 @@ Le front-end doit être réalisé en HTML/CSS et JavaScript.
 
 **Le nombre de fonctionnalités, la qualité du code et du design global seront pris en compte dans la note globale du projet !**
 
-Il doit présenter au moins deux vues : une vue présentant l'ensemble des messages reçus de l'API et une vue permettant 
+Il doit présenter au moins deux vues : une vue présentant l'ensemble des articles reçus de l'API et une vue permettant 
 d'afficher le contenu d'un seul message après avoir cliqué dessus.
